@@ -1,0 +1,20 @@
+{
+    "nav": {
+      "home": "Home",
+      "boxLetters": "Box Letters",
+      "sign": "Sign",
+      "digitalPrinting": "Digital Printing",
+      "gallery": "Gallery",
+      "aboutUs": "About Us",
+      "communication": "Contact Us",
+      "language": "Language:"
+    },
+    "hero": {
+        "welcome": "Welcome to Noor",
+      "title": "We Bring Your Brand to",
+      "titleHighlight": "Life",
+      "description": "We give your brand tangible dimensions that dazzle the eyes through the latest illuminated signage technologies and luxurious digital printing.",
+      "btnGallery": "Explore Gallery",
+      "btnContact": "Contact Us"
+    }
+  }

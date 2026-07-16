@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #FF6B00;
+  --color-secondary: #4A4A4A;
+  --color-light-gray: #F5F5F5;
+  --color-white: #FFFFFF;
+  --color-text-main: #1A1A1A;
+  --color-text-muted: #757575;
+}
+
+:root {
+  /* هنا نضع Tajawal أولاً ليكون الخط الافتراضي للعربي */
+  --font-main: 'Tajawal', 'Manrope', sans-serif;
+  
+  /* بقية الإعدادات الخاصة بك */
+  background-color: var(--color-white);
+  color: var(--color-text-main);
+}
+
+body {
+  /* تطبيق المتغير الجديد على كامل الموقع */
+  font-family: var(--font-main);
+}
