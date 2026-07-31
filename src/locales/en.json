@@ -16,5 +16,145 @@
       "description": "We give your brand tangible dimensions that dazzle the eyes through the latest illuminated signage technologies and luxurious digital printing.",
       "btnGallery": "Explore Gallery",
       "btnContact": "Contact Us"
+    },
+    "services": {
+    "sectionTitle": "With Our Professional Services",
+    "sectionDesc": "We offer comprehensive, professional solutions in signage and digital printing to showcase your brand identity in the best possible light.",
+    "learnMore": "Learn More"
+  },
+  "servicesGrid": {
+  "boxLettersTitle": "Box Letters",
+  "boxLettersDesc": "High-quality custom illuminated 3D channel letters design and manufacturing to grab attention and boost your brand presence.",
+  "signTitle": "Sign",
+  "signDesc": "Innovative exterior and interior signage solutions suitable for all commercial activities to support your brand identity.",
+  "learnMore": "Learn More",
+  "digitalPrintingTitle": "Digital Printing",
+"digitalPrintingDesc": "Advanced digital printing solutions with superior quality and fast turnaround for all your business needs."
+},
+"about": {
+  "tag": "ABOUT US",
+  "title": "Advertising Solutions That Strengthen Your Brand",
+  "description": "We specialize in providing integrated advertising solutions that combine manufacturing precision and high-quality materials. We rely on the latest technologies to ensure your projects are executed in the best possible way, with a full commitment to achieving customer satisfaction and building a strong commercial brand identity that stands out in the market.",
+  "feature1": "Professional Team",
+  "feature2": "High Quality Materials",
+  "feature3": "On-Time Delivery",
+  "feature4": "Modern Manufacturing Equipment",
+  "learnMore": "Learn More About Us"
+},
+"featuredProjects": {
+  "tag": "OUR PORTFOLIO",
+  "title": "Projects Brought to Life Through Our Creativity",
+  "description": "Explore a curated selection of our latest and best completed projects.",
+  "viewAll": "View All Projects"
+},
+"projectsGrid": {
+  "card1Title": "Restaurant Sign",
+  "card2Title": "Cafe / Restaurant",
+  "card3Title": "Pharmacy Sign",
+  "card4Title": "Clothing Store",
+  "card5Title": "Hotel Entrance",
+  "card6Title": "Company Office",
+  "badgeBoxLetters": "Box Letters",
+  "badgeSigns": "Signs",
+  "badgePrinting": "Digital Printing"
+},
+ "contact": {
+  "tag": "Contact Us",
+  "title": "We'd Love to Hear From You",
+  "description": "Our team is ready to answer your questions and bring your projects to life with the highest quality.",
+  "formTitle": "Send Us a Message",
+  "fullName": "Full Name",
+  "phone": "Phone Number",
+  "projectType": "Project Type (Optional)",
+  "message": "Message",
+  "sendBtn": "Send Request",
+  "placeholderName": "Enter your full name",
+  "placeholderPhone": "+1234567890",
+  "placeholderProject": "Brand Identity / Signboards",
+  "placeholderMessage": "Write your message here...",
+  "addressLabel": "Company Address",
+  "phoneLabel": "Phone Number",
+  "whatsappLabel": "WhatsApp",
+  "whatsappBtn": "Chat with us on WhatsApp",
+  "hoursLabel": "Working Hours",
+  "hoursText": "Monday – Saturday: 09:00 AM – 07:00 PM",
+  "mapBtn": "Open in Google Maps"
+},
+    "whyChooseUs": {
+    
+      "badge": "WHY CHOOSE US",
+      "title": "Why We Are the Right Partner For Your Brand",
+      "card1": {
+        "title": "Extensive Experience & Professionalism",
+        "description": "We have a professional team with years of experience delivering the latest advertising solutions and innovative designs."
+      },
+      "card2": {
+        "title": "High Quality Execution",
+        "description": "We use the finest materials and digital printing resources to ensure your projects meet the highest standards of quality and precision."
+      },
+      "card3": {
+        "title": "Integrated & Custom Solutions",
+        "description": "We provide comprehensive packages including strategy, design, and on-site execution to meet all your corporate needs."
+      },
+      "card4": {
+        "title": "Strict Deadlines & Ongoing Support",
+        "description": "We understand the value of time in your business, committed to delivering projects on schedule with continuous support.",
+        "subDescription": "Whether you are a startup or a large enterprise, we ensure full flexibility and speed in processing your requests."
+      },
+      "services": {
+  "tag": "Our Services",
+  "sectionTitle": "Featured Services",
+  "sectionDesc": "We provide the best solutions..."
+}
+
+
+} , 
+"footer": {
+  "brandSubtitle": "Advertising & Digital Printing",
+  "quickLinksTitle": "Quick Links",
+  "home": "Home",
+  "about": "About Us",
+  "projects": "Completed Projects",
+  "services": "Our Services",
+  "whyChooseUs": "Why Choose Us",
+  "contact": "Contact Us",
+  "contactInfoTitle": "Contact Info",
+  "address": "3015 Grand Ave, Coconut Grove, Merrick Way, FL 12345",
+  "phone": "+123-456-789",
+  "email": "sales@example.com",
+  "rights": "All rights reserved.",
+  "developer": "Designed & Developed by DeepCode"
+},
+  "boxLetters": {
+    "hero": {
+      "title": "Box Letters",
+      "subtitle": "Premium illuminated letters for modern brands",
+      "button": "Explore More"
+    },
+
+    "slides": {
+      "whiteAcrylic": {
+        "title": "White Acrylic Box Letters",
+        "description": "High quality acrylic letters with elegant LED lighting options, designed to create a modern and attractive appearance."
+      },
+
+      "metalOptions": {
+        "title": "Cutout Box Letters - Metal Options and Surface Treatments",
+        "description": "Custom manufactured letters available in different metal finishes including Painted Aluminum, Stainless Steel, Copper, Brass and Corten Steel."
+      },
+
+      "ledLetters": {
+        "title": "LED Illuminated Box Letters",
+        "description": "Professional illuminated letters combining premium materials with advanced LED technology."
+      }
     }
   }
+
+  
+ 
+    
+  }
+
+ 
+
+  

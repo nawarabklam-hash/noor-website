@@ -1,6 +1,15 @@
 /* eslint-disable react-refresh/only-export-components */
 import React, { createContext, useContext, useState, useEffect } from "react";
 
+// استيراد ملفات الترجمة مرّة واحدة فقط هنا
+import enTranslations from "../locales/en.json";
+import erTranslations from "../locales/er.json"; // أو er.json حسب اسم الملف عندك
+
+const translations = {
+  EN: enTranslations,
+  AR: erTranslations,
+};
+
 // 1. تعريف الأنواع
 type Language = "EN" | "AR";
 
@@ -8,6 +17,7 @@ interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
   isRtl: boolean;
+  t: typeof enTranslations; // إضافة كائن الترجمة ليكون متاحاً في كل الموقع
 }
 
 // 2. إنشاء الـ Context
@@ -27,6 +37,9 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
   const isRtl = language === "AR";
 
+  // جلب الترجمة المناسبة تلقائياً حسب اللغة الحالية
+  const t = translations[language];
+
   useEffect(() => {
     const htmlElement = document.documentElement;
     htmlElement.dir = isRtl ? "rtl" : "ltr";
@@ -34,7 +47,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   }, [language, isRtl]);
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, isRtl }}>
+    <LanguageContext.Provider value={{ language, setLanguage, isRtl, t }}>
       {children}
     </LanguageContext.Provider>
   );

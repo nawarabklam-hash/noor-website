@@ -5,14 +5,6 @@ import logo from "../../assets/logo.png";
 import Button from "../ui/Button";
 import { useLanguage } from "../../context/LanguageContext";
 
-import enTranslations from "../../locales/en.json";
-import arTranslations from "../../locales/er.json";
-
-const translations = {
-  EN: enTranslations,
-  AR: arTranslations
-};
-
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showNavbar, setShowNavbar] = useState(true);
@@ -20,7 +12,10 @@ const Navbar = () => {
   const [lastScrollY, setLastScrollY] = useState(0);
   
   const { language, setLanguage } = useLanguage();
-  const t = translations[language].nav;
+  const isAr = language === "AR";
+
+  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+  const navT = (useLanguage() as any).t?.nav || {};
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "unset";
@@ -32,7 +27,6 @@ const Navbar = () => {
       const currentScrollY = window.scrollY;
       const isAtBottom = window.innerHeight + currentScrollY >= document.documentElement.scrollHeight - 10;
       
-      // المنطق: يختفي عند الصعود، يظهر عند النزول، وفي القمة/القاع
       if (currentScrollY < 50 || isAtBottom) {
         setShowNavbar(true);
       } else if (currentScrollY < lastScrollY) {
@@ -50,73 +44,88 @@ const Navbar = () => {
   }, [lastScrollY]);
 
   const links = [
-    { name: t.home, path: "/" },
-    { name: t.boxLetters, path: "/box-letters" },
-    { name: t.sign, path: "/sign" },
-    { name: t.digitalPrinting, path: "/digital-printing" },
-    { name: t.gallery, path: "/gallery" },
-    { name: t.aboutUs, path: "/about-us" },
-    { name: t.communication, path: "/communication" },
+    { name: navT.home || (isAr ? "الرئيسية" : "Home"), path: "/" },
+    { name: navT.boxLetters || (isAr ? "حروف بارزة" : "Box Letters"), path: "/box-letters" },
+    { name: navT.sign || (isAr ? "لوحات" : "Sign"), path: "/sign" },
+    { name: navT.digitalPrinting || (isAr ? "طباعة رقمية" : "Digital Printing"), path: "/digital-printing" },
+    { name: navT.gallery || (isAr ? "معرض الأعمال" : "Gallery"), path: "/gallery" },
+    { name: navT.aboutUs || (isAr ? "من نحن" : "About Us"), path: "/about-us" },
+    { name: navT.communication || (isAr ? "تواصل معنا" : "Contact"), path: "/communication" },
   ];
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out ${
-        showNavbar ? "translate-y-0" : "-translate-y-full"
-      } ${
-        isScrolled 
-          ? "bg-black/10 backdrop-blur-md py-4 border-b border-white/5" 
-          : "bg-transparent py-6 border-transparent"
-      }`}>
-        {/* الحاوية المركزية بتوزيع متوازن */}
-        <div className="container mx-auto flex items-center justify-center gap-65 px-4">
+      <nav 
+        className={`fixed top-0 left-0 w-full max-w-full overflow-x-hidden z-50 transition-all duration-500 ease-in-out ${
+          showNavbar ? "translate-y-0" : "-translate-y-full"
+        } ${
+          isScrolled 
+            ? "bg-black/15 backdrop-blur-md py-4 border-b border-white/5 shadow-lg" 
+            : "bg-transparent py-6 border-transparent"
+        }`}
+        dir={isAr ? "rtl" : "ltr"}
+      >
+        <div className="container mx-auto flex items-center justify-between px-4 sm:px-6 max-w-full">
           
           {/* 1. اللوجو */}
           <div className="flex-shrink-0">
-            <img src={logo} alt="Noor Logo" className="h-7 w-auto object-contain" />
+            <NavLink to="/">
+              <img src={logo} alt="Noor Logo" className="h-8 w-auto object-contain" />
+            </NavLink>
           </div>
           
-          {/* 2. الروابط متقاربة بـ gap-6 */}
-          <div className="hidden lg:flex items-center gap-6 text-white">
+          {/* 2. الروابط في المنتصف */}
+          <div className="hidden lg:flex items-center gap-6 xl:gap-8 text-white">
             {links.map((link) => (
-              <NavLink key={link.path} to={link.path} className={({ isActive }) => `text-[14px] font-semibold transition-all ${isActive ? "text-primary" : "text-white/80 hover:text-primary"}`}>
+              <NavLink 
+                key={link.path} 
+                to={link.path} 
+                className={({ isActive }) => `text-[13px] xl:text-[14px] font-semibold transition-all whitespace-nowrap ${isActive ? "text-[#FF6B00]" : "text-white/80 hover:text-[#FF6B00]"}`}
+              >
                 {link.name}
               </NavLink>
             ))}
           </div>
 
-          {/* 3. زر اللغة */}
+          {/* 3. زر تغيير اللغة */}
           <div className="hidden lg:block flex-shrink-0">
             <Button size="md" variant="secondary" onClick={() => setLanguage(language === "EN" ? "AR" : "EN")}>
               {language === "AR" ? "English" : "العربية"}
             </Button>
           </div>
 
-          {/* زر الموبايل */}
-          <button onClick={() => setIsOpen(true)} className="lg:hidden text-white p-2">
-            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+          {/* زر قائمة الموبايل */}
+          <button onClick={() => setIsOpen(true)} className="lg:hidden text-white p-2 focus:outline-none flex-shrink-0" aria-label="Open Menu">
+            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"/>
+            </svg>
           </button>
         </div>
       </nav>
 
-      {/* قائمة الموبايل */}
-      <div className={`lg:hidden fixed top-0 right-0 h-full w-[80%] max-w-sm bg-[#0a0a0a] z-[60] flex flex-col p-8 border-l border-white/10 shadow-2xl transition-transform duration-500 ease-in-out ${isOpen ? "translate-x-0" : "translate-x-full"}`}>
-        <button onClick={() => setIsOpen(false)} className="self-start text-white bg-white/10 p-2 rounded-full mb-10">✕</button>
-        <div className="flex flex-col gap-6 text-right">
+      {/* قائمة الموبايل الجانبية (مع تأمين العرض لعدم إحداث سكرول أفقي) */}
+      <div 
+        className={`lg:hidden fixed top-0 ${isAr ? "left-0 border-r" : "right-0 border-l"} h-full w-[75%] sm:w-[300px] max-w-full bg-[#0a0a0a] z-[60] flex flex-col p-6 sm:p-8 border-white/10 shadow-2xl transition-transform duration-500 ease-in-out overflow-y-hidden ${
+          isOpen ? "translate-x-0" : (isAr ? "-translate-x-full" : "translate-x-full")
+        }`}
+        dir={isAr ? "rtl" : "ltr"}
+      >
+        <button onClick={() => setIsOpen(false)} className="self-start text-white bg-white/10 p-2 rounded-full mb-8 hover:bg-white/20 transition-colors" aria-label="Close Menu">✕</button>
+        <div className={`flex flex-col gap-5 ${isAr ? "text-right" : "text-left"}`}>
           {links.map((link) => (
-            <NavLink key={link.path} to={link.path} onClick={() => setIsOpen(false)} className="text-xl font-bold text-white hover:text-primary transition-colors">
+            <NavLink key={link.path} to={link.path} onClick={() => setIsOpen(false)} className="text-base sm:text-lg font-bold text-white hover:text-[#FF6B00] transition-colors">
               {link.name}
             </NavLink>
           ))}
         </div>
-        <div className="mt-auto">
+        <div className="mt-auto pt-6 border-t border-white/10">
           <Button size="lg" variant="secondary" className="w-full" onClick={() => { setLanguage(language === "EN" ? "AR" : "EN"); setIsOpen(false); }}>
-            {language === "AR" ? "English" : "العربية"}
+            {language === "EN" ? "العربية" : "English"}
           </Button>
         </div>
       </div>
       
-      {isOpen && <div className="fixed inset-0 bg-black/70 z-[50] backdrop-blur-sm" onClick={() => setIsOpen(false)}></div>}
+      {isOpen && <div className="fixed inset-0 bg-black/70 z-[50] backdrop-blur-sm transition-opacity" onClick={() => setIsOpen(false)}></div>}
     </>
   );
 };

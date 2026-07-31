@@ -7,18 +7,20 @@
   --color-white: #FFFFFF;
   --color-text-main: #1A1A1A;
   --color-text-muted: #757575;
+  --color-dark-bg: #0a0a0a; /* أضفنا لون الخلفية الداكن هنا رسمياً */
 }
 
 :root {
-  /* هنا نضع Tajawal أولاً ليكون الخط الافتراضي للعربي */
   --font-main: 'Tajawal', 'Manrope', sans-serif;
   
-  /* بقية الإعدادات الخاصة بك */
-  background-color: var(--color-white);
-  color: var(--color-text-main);
+  /* اجعل الخلفية الافتراضية داكنة وليست بيضاء ليتطابق مع تصميمك */
+  background-color: #0a0a0a; 
+  color: #ffffff;
 }
 
 body {
-  /* تطبيق المتغير الجديد على كامل الموقع */
   font-family: var(--font-main);
+  background-color: #0a0a0a; /* ضمان تطبيق الخلفية السوداء/الداكنة على كامل الجسم */
+  margin: 0;
+  padding: 0;
 }
