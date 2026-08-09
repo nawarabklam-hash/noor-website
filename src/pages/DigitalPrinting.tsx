@@ -56,7 +56,7 @@ const DigitalPrinting: React.FC = () => {
   return (
     <main 
       onWheel={handleWheel}
-      className="w-full h-screen bg-[#161317] pt-20 pb-6 px-4 md:px-12 flex flex-col justify-center overflow-hidden relative select-none" 
+      className="w-full h-screen bg-[#161317] pt-16 md:pt-20 pb-4 px-4 md:px-12 flex flex-col justify-center overflow-hidden relative select-none" 
       dir={isAr ? "rtl" : "ltr"}
     >
       <div className="w-full max-w-[1350px] mx-auto relative flex flex-col justify-center h-full my-auto">
@@ -68,36 +68,36 @@ const DigitalPrinting: React.FC = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
-            className={`w-full flex flex-col ${isReversed ? "lg:flex-col-reverse" : "lg:flex-col"} justify-center gap-4 md:gap-6`}
+            className={`w-full flex flex-col ${isReversed ? "lg:flex-col-reverse" : "lg:flex-col"} justify-center gap-3 md:gap-6`}
           >
             
-            {/* 1. قسم النصوص */}
+            {/* 1. قسم النصوص (تم تصغير الخطوط والمسافات للموبايل) */}
             <motion.div 
               initial={shouldAnimate && !hasAnimatedDigitalPrinting ? { opacity: 0, y: -20 } : { opacity: 1, y: 0 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="w-full max-w-4xl space-y-2"
+              className="w-full max-w-4xl space-y-1.5 md:space-y-2"
             >
-              <span className="text-[#FF6600] font-semibold text-xs md:text-sm block tracking-wide">
+              <span className="text-[#FF6600] font-semibold text-[11px] md:text-sm block tracking-wide">
                 {currentContent?.badge}
               </span>
-              <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight text-white leading-tight">
+              <h2 className="text-lg md:text-3xl font-extrabold tracking-tight text-white leading-snug md:leading-tight">
                 {currentContent?.title}
               </h2>
-              <p className="text-white/85 text-xs md:text-sm leading-relaxed max-w-3xl">
+              <p className="text-white/85 text-[11px] md:text-sm leading-relaxed max-w-3xl">
                 {currentContent?.description}
               </p>
             </motion.div>
 
             {/* 2. حاوية الصور المشتركة */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-center w-full">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 md:gap-4 items-center w-full">
               
               {/* الصورة الرئيسية */}
               <motion.div 
                 initial={shouldAnimate && !hasAnimatedDigitalPrinting ? { opacity: 0, scale: 0.97 } : { opacity: 1, scale: 1 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="lg:col-span-8 h-[220px] md:h-[350px] relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 group cursor-pointer"
+                className="lg:col-span-8 h-[190px] md:h-[350px] relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 group cursor-pointer"
                 onClick={() => setActiveImage(currentSlideData.image)}
               >
                 <img 
@@ -116,7 +116,7 @@ const DigitalPrinting: React.FC = () => {
                 </div>
               </motion.div>
 
-              {/* الصورة الإضافية (تم تعديل القسم الثالث حصراً لتملء الكرت تماماً) */}
+              {/* الصورة الإضافية */}
               <motion.div 
                 initial={shouldAnimate && !hasAnimatedDigitalPrinting ? { opacity: 0, y: 30 } : { opacity: 1, y: 0 }}
                 animate={{ 
@@ -133,8 +133,8 @@ const DigitalPrinting: React.FC = () => {
                 }}
                 className={`relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-[#1e1a20]/60 backdrop-blur-sm group cursor-pointer ${
                   currentIndex === 2 
-                    ? "lg:col-span-4 h-[220px] md:h-[350px] p-0" 
-                    : "lg:col-span-4 h-[180px] md:h-[290px] p-3 flex items-center justify-center"
+                    ? "lg:col-span-4 h-[190px] md:h-[350px] p-0" 
+                    : "lg:col-span-4 h-[150px] md:h-[290px] p-3 flex items-center justify-center"
                 }`}
                 onClick={() => setActiveImage(currentSlideData.secondaryImage)}
               >

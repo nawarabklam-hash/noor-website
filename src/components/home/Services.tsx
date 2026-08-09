@@ -58,7 +58,7 @@ const Services: React.FC = () => {
         <motion.div 
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           variants={shouldAnimate ? containerVariants : {}}
-          initial="hidden"
+          initial={shouldAnimate ? "hidden" : "visible"}
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
         >
@@ -70,7 +70,7 @@ const Services: React.FC = () => {
             return (
               <motion.div
                 key={service.id}
-                variants={itemVariants}
+                variants={shouldAnimate ? itemVariants : {}}
                 className="group relative bg-black/40 rounded-3xl overflow-hidden border border-white/10 shadow-xl transition-all duration-500 hover:-translate-y-2 hover:border-[#FF6B00] flex flex-col"
               >
                 <div className="relative h-64 w-full overflow-hidden bg-zinc-900">

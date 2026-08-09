@@ -5,6 +5,9 @@ import SectionHeader from "../ui/SectionHeader";
 import { aboutData } from "../../data/about";
 import { motion } from "framer-motion"; // تأكد من تثبيت هذه المكتبة
 
+// متغير عام لضمان تشغيل الأنيميشن مرة واحدة فقط في الجلسة ولن يتكرر عند العودة للقسم
+let hasAnimatedAboutSection = false;
+
 const AboutSection: React.FC = () => {
   const { t, language } = useLanguage();
   const isAr = language === "AR";
@@ -16,6 +19,9 @@ const AboutSection: React.FC = () => {
     aboutT.feature3, 
     aboutT.feature4
   ];
+
+  // إذا كان قد عمل من قبل، لا تقم بعمل أنيميشن إضافي واجعله ظاهراً مباشرة
+  const shouldAnimate = !hasAnimatedAboutSection;
 
   return (
     <section id="about" className="relative w-full py-24 bg-[#141414] text-white overflow-hidden border-y border-white/5" dir={isAr ? "rtl" : "ltr"}>
@@ -30,9 +36,10 @@ const AboutSection: React.FC = () => {
             
             {/* الأنيميشن يعمل عند الوصول للقسم مرة واحدة فقط */}
             <motion.div 
-              initial={{ opacity: 0, y: 50 }}
+              initial={shouldAnimate ? { opacity: 0, y: 50 } : { opacity: 1, y: 0 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }} // once: true تضمن حدوثه مرة واحدة فقط
+              viewport={{ once: true, amount: 0.3 }} 
+              onViewportEnter={() => { hasAnimatedAboutSection = true; }}
               transition={{ duration: 0.6 }}
               className="w-full"
             >
@@ -45,10 +52,10 @@ const AboutSection: React.FC = () => {
             </motion.div>
 
             <motion.div 
-              initial={{ opacity: 0, y: 50 }}
+              initial={shouldAnimate ? { opacity: 0, y: 50 } : { opacity: 1, y: 0 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6, delay: 0.2 }} // تأخير بسيط ليظهر بعد العنوان
+              transition={{ duration: 0.6, delay: shouldAnimate ? 0.2 : 0 }} 
               className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full mb-10"
             >
               {aboutData.highlights.map((item, idx) => (
@@ -67,10 +74,10 @@ const AboutSection: React.FC = () => {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 50 }}
+              initial={shouldAnimate ? { opacity: 0, y: 50 } : { opacity: 1, y: 0 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
+              transition={{ duration: 0.6, delay: shouldAnimate ? 0.4 : 0 }}
             >
               <Link to={aboutData.ctaPath}>
                 <button className="px-8 py-4 rounded-full bg-[#FF6B00] hover:bg-[#e05e00] text-white font-semibold text-sm transition-all duration-300 hover:scale-105 shadow-lg shadow-[#FF6B00]/30 hover:shadow-2xl hover:shadow-[#FF6B00]/60 flex items-center gap-2">
@@ -81,7 +88,7 @@ const AboutSection: React.FC = () => {
           </div>
 
           <motion.div 
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={shouldAnimate ? { opacity: 0, scale: 0.8 } : { opacity: 1, scale: 1 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.8 }}

@@ -107,25 +107,24 @@
   "tag": "Our Services",
   "sectionTitle": "Featured Services",
   "sectionDesc": "We provide the best solutions..."
-}
-
-
-} , 
+}},
 "footer": {
-  "brandSubtitle": "Advertising & Digital Printing",
+  "brandSubtitle": "For Advertising, Publicity, and Digital Printing",
   "quickLinksTitle": "Quick Links",
   "home": "Home",
   "about": "About Us",
-  "projects": "Completed Projects",
+  "projects": "Our Completed Projects",
   "services": "Our Services",
   "whyChooseUs": "Why Choose Us",
   "contact": "Contact Us",
-  "contactInfoTitle": "Contact Info",
-  "address": "3015 Grand Ave, Coconut Grove, Merrick Way, FL 12345",
-  "phone": "+123-456-789",
-  "email": "sales@example.com",
+  "contactInfoTitle": "Contact Information",
+  "address": "Ma'raba - East Road - Opposite Al-Amani Wedding Hall",
+  "phone1": "0960961620",
+  "phone2": "0982237799",
+  "email": "Email.abo.fahed.10@hotmail.com",
   "rights": "All rights reserved.",
-  "developer": "Designed & Developed by DeepCode"
+  "developer": "Website Design & Development"
+
 },
 "signSection": {
   "hero": {

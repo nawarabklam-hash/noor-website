@@ -4,6 +4,7 @@ import { featuredProjectsData } from "../../data/featuredProjects";
 import SectionHeader from "../ui/SectionHeader";
 import { motion } from "framer-motion"; 
 
+// متغير عام لضمان تشغيل أنيميشن المشاريع مرة واحدة فقط في الجلسة ولن يتكرر عند العودة
 let hasAnimatedProjects = false;
 
 const Projects: React.FC = () => {
@@ -54,7 +55,7 @@ const Projects: React.FC = () => {
         <motion.div 
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
           variants={shouldAnimate ? containerVariants : {}}
-          initial="hidden"
+          initial={shouldAnimate ? "hidden" : "visible"}
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
         >
@@ -65,7 +66,7 @@ const Projects: React.FC = () => {
             return (
               <motion.div
                 key={project.id}
-                variants={itemVariants} // الحركة المخصصة لكل بطاقة مشروع
+                variants={shouldAnimate ? itemVariants : {}} // إذا انتهى الأنيميشن لا يعيد تطبيقه
                 onClick={() => setSelectedImage(project.image)}
                 className="group relative bg-black/40 rounded-2xl overflow-hidden border border-white/10 shadow-xl transition-all duration-500 hover:-translate-y-2 hover:border-[#FF6B00] hover:shadow-2xl hover:shadow-[#FF6B00]/15 flex flex-col cursor-pointer"
               >

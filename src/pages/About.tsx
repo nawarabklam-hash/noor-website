@@ -1,28 +1,32 @@
-
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { useLanguage } from "../context/LanguageContext";
 import { aboutData, type CounterItemData } from "../data/aboutData";
 
-const CounterItem: React.FC<{ item: CounterItemData; title: string }> = ({ item, title }) => {
-  // التحقق مما إذا تم تشغيل العداد مسبقاً في هذه الجلسة
-  const hasVisitedBefore = sessionStorage.getItem("hasAnimatedCounters") === "true";
-  
-  const [count, setCount] = useState(hasVisitedBefore ? item.end : 0);
+// متغيرات عالمية لضمان عمل الأنيميشن والعد مرة واحدة فقط في الجلسة حتى يتم تحديث الصفحة (Refresh)
+let hasAnimatedCounters = false;
+let hasAnimatedAboutMain = false;
+let hasAnimatedBanner = false;
+
+const CounterItem: React.FC<{ item: CounterItemData; title: string; shouldAnimate: boolean }> = ({ item, title, shouldAnimate }) => {
+  const [count, setCount] = useState(hasAnimatedCounters ? item.end : 0);
   const ref = useRef<HTMLDivElement>(null);
-  const [hasStarted, setHasStarted] = useState(hasVisitedBefore);
-  const [hasRun, setHasRun] = useState(hasVisitedBefore);
+  const [hasStarted, setHasStarted] = useState(!shouldAnimate);
+  const [hasRun, setHasRun] = useState(false);
 
   useEffect(() => {
-    if (hasVisitedBefore) return;
+    if (!shouldAnimate || hasAnimatedCounters) {
+      setCount(item.end);
+      return;
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !hasRun) {
           setHasStarted(true);
           setHasRun(true);
-          sessionStorage.setItem("hasAnimatedCounters", "true");
+          hasAnimatedCounters = true;
         }
       },
       { threshold: 0.3 }
@@ -33,10 +37,10 @@ const CounterItem: React.FC<{ item: CounterItemData; title: string }> = ({ item,
     }
 
     return () => observer.disconnect();
-  }, [hasRun, hasVisitedBefore]);
+  }, [hasRun, shouldAnimate, item.end]);
 
   useEffect(() => {
-    if (!hasStarted || hasVisitedBefore) return;
+    if (!hasStarted || (hasAnimatedCounters && count === item.end)) return;
 
     let start = 0;
     const duration = 2000;
@@ -53,13 +57,14 @@ const CounterItem: React.FC<{ item: CounterItemData; title: string }> = ({ item,
     }, 16);
 
     return () => clearInterval(timer);
-  }, [hasStarted, item.end, hasVisitedBefore]);
+  }, [hasStarted, item.end]);
 
   return (
     <motion.div 
       ref={ref} 
-      initial={hasVisitedBefore ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-      animate={{ opacity: 1, y: 0 }}
+      initial={shouldAnimate ? { opacity: 0, y: 40 } : { opacity: 1, y: 0 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       className="bg-[#1e1a20]/80 border border-white/10 rounded-2xl p-6 text-center shadow-xl flex flex-col items-center justify-center transition-transform hover:scale-105 duration-300"
     >
@@ -78,9 +83,9 @@ const About: React.FC = () => {
   const navigate = useNavigate();
   const isAr = language === "AR";
 
-  // فحص حالة الجلسة للأقسام الأخرى (منطقة النصوص والبانر)
-  const isFirstVisitAbout = !sessionStorage.getItem("hasAnimatedAboutMain");
-  const isFirstVisitBanner = !sessionStorage.getItem("hasAnimatedBanner");
+  const shouldAnimateCounters = !hasAnimatedCounters;
+  const shouldAnimateAbout = !hasAnimatedAboutMain;
+  const shouldAnimateBanner = !hasAnimatedBanner;
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -97,7 +102,6 @@ const About: React.FC = () => {
   const bannerTitle = aboutText.banner?.title || "";
   const bannerBtn = aboutText.banner?.button || "";
 
-  // إعدادات تتابع ظهور العدادات
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -116,15 +120,18 @@ const About: React.FC = () => {
         {/* 1. قسم العدادات */}
         <motion.div 
           className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6"
-          variants={containerVariants}
+          variants={shouldAnimateCounters ? containerVariants : {}}
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          onViewportEnter={() => { hasAnimatedCounters = true; }}
         >
           {aboutData.counters.map((counter) => (
             <CounterItem 
               key={counter.id} 
               item={counter} 
               title={counterTitles[counter.titleKey as keyof typeof counterTitles] || ""}
+              shouldAnimate={shouldAnimateCounters}
             />
           ))}
         </motion.div>
@@ -133,9 +140,10 @@ const About: React.FC = () => {
         <div className={`grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-[#1c181d]/50 border border-white/10 p-6 md:p-10 rounded-3xl shadow-2xl`}>
           
           <motion.div 
-            initial={isFirstVisitAbout ? { opacity: 0, x: isAr ? -30 : 30 } : { opacity: 1, x: 0 }}
-            animate={{ opacity: 1, x: 0 }}
-            onAnimationComplete={() => { sessionStorage.setItem("hasAnimatedAboutMain", "true"); }}
+            initial={shouldAnimateAbout ? { opacity: 0, x: isAr ? -30 : 30 } : { opacity: 1, x: 0 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            onViewportEnter={() => { hasAnimatedAboutMain = true; }}
             transition={{ duration: 0.6 }}
             className={`lg:col-span-7 h-[280px] md:h-[420px] rounded-2xl overflow-hidden shadow-2xl border border-white/10 relative group ${isAr ? 'lg:order-2' : 'lg:order-1'}`}
           >
@@ -148,8 +156,9 @@ const About: React.FC = () => {
           </motion.div>
 
           <motion.div 
-            initial={isFirstVisitAbout ? { opacity: 0, x: 50 } : { opacity: 1, x: 0 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={shouldAnimateAbout ? { opacity: 0, x: 50 } : { opacity: 1, x: 0 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.7, ease: "easeOut" }}
             className={`lg:col-span-5 space-y-4 ${isAr ? 'lg:order-1 text-right' : 'lg:order-2 text-left'}`}
           >
@@ -170,9 +179,10 @@ const About: React.FC = () => {
 
         {/* 3. البانر البرتقالي */}
         <motion.div 
-          initial={isFirstVisitBanner ? { opacity: 0, y: 30 } : { opacity: 1, y: 0 }}
-          animate={{ opacity: 1, y: 0 }}
-          onAnimationComplete={() => { sessionStorage.setItem("hasAnimatedBanner", "true"); }}
+          initial={shouldAnimateBanner ? { opacity: 0, y: 30 } : { opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          onViewportEnter={() => { hasAnimatedBanner = true; }}
           transition={{ duration: 0.6 }}
           className={`w-full bg-[#FF6600] rounded-2xl p-6 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl relative overflow-hidden ${isAr ? 'md:flex-row-reverse' : ''}`}
         >

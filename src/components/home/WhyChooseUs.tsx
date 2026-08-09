@@ -60,14 +60,14 @@ const WhyChooseUs: React.FC = () => {
         <motion.div 
           className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch"
           variants={shouldAnimate ? containerVariants : {}}
-          initial="hidden"
+          initial={shouldAnimate ? "hidden" : "visible"}
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
         >
           
           {/* البطاقة الأولى */}
           <motion.div 
-            variants={itemVariants}
+            variants={shouldAnimate ? itemVariants : {}}
             className="group p-8 rounded-3xl bg-[#18181b] border border-white/10 shadow-xl backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:border-[#FF6B00] hover:shadow-2xl hover:shadow-[#FF6B00]/20 flex flex-col justify-between text-right cursor-pointer"
           >
             <div className="transition-transform duration-500 group-hover:translate-x-1">
@@ -85,7 +85,7 @@ const WhyChooseUs: React.FC = () => {
 
           {/* البطاقة الثانية */}
           <motion.div 
-            variants={itemVariants}
+            variants={shouldAnimate ? itemVariants : {}}
             className="group p-8 rounded-3xl bg-[#18181b] border border-white/10 shadow-xl backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:border-[#FF6B00] hover:shadow-2xl hover:shadow-[#FF6B00]/20 flex flex-col justify-between text-right cursor-pointer"
           >
             <div className="transition-transform duration-500 group-hover:translate-x-1">
@@ -103,7 +103,7 @@ const WhyChooseUs: React.FC = () => {
 
           {/* البطاقة البارزة الكبيرة */}
           <motion.div 
-            variants={itemVariants}
+            variants={shouldAnimate ? itemVariants : {}}
             className="lg:row-span-2 group p-8 md:p-10 rounded-3xl bg-[#18181b] border border-white/10 shadow-xl backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:border-[#FF6B00] hover:shadow-2xl hover:shadow-[#FF6B00]/20 flex flex-col justify-between relative overflow-hidden text-right cursor-pointer"
           >
             <div className="absolute top-0 right-0 w-64 h-64 bg-[#FF6B00]/5 rounded-full blur-3xl pointer-events-none transition-all duration-500 group-hover:bg-[#FF6B00]/15"></div>
@@ -126,7 +126,7 @@ const WhyChooseUs: React.FC = () => {
 
           {/* البطاقة الثالثة تحت البطاقتين الأوليين */}
           <motion.div 
-            variants={itemVariants}
+            variants={shouldAnimate ? itemVariants : {}}
             className="lg:col-span-2 group p-8 rounded-3xl bg-[#18181b] border border-white/10 shadow-xl backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:border-[#FF6B00] hover:shadow-2xl hover:shadow-[#FF6B00]/20 flex flex-col justify-between text-right cursor-pointer"
           >
             <div className="transition-transform duration-500 group-hover:translate-x-1">

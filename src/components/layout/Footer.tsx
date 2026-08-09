@@ -1,6 +1,6 @@
 import React from "react";
 import { HashLink } from "react-router-hash-link";
-import { Link } from "react-router-dom"; // 1. استيراد Link
+import { Link } from "react-router-dom";
 import { useLanguage } from "../../context/LanguageContext";
 import {
   FaFacebookF,
@@ -155,7 +155,6 @@ const Footer: React.FC = () => {
                   </HashLink>
                 </li>
                 <li>
-                  {/* تم تعديل هذا الرابط ليصبح Link عادي يوجه إلى صفحة أو كومبوننت اتصل بنا */}
                   <Link
                     to="/contact"
                     className="hover:text-[#FF6B00] transition-colors flex items-center gap-2"
@@ -172,7 +171,7 @@ const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* معلومات التواصل */}
+          {/* معلومات التواصل (تأخذ من ملف الترجمة الآن) */}
           <div className="lg:col-span-5">
             <h3 className="text-lg font-bold mb-6 text-white tracking-wide border-l-4 border-[#FF6B00] pl-3">
               {footerT.contactInfoTitle}
@@ -182,20 +181,20 @@ const Footer: React.FC = () => {
               <li className="flex items-start gap-3">
                 <FaMapMarkerAlt className="text-[#FF6B00] mt-1 flex-shrink-0" />
                 <span className="break-words">
-                  معربا - طريق الشرق - مقابل صالة الأماني للأفراح
+                  {footerT.address}
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <FaPhoneAlt className="text-[#FF6B00] flex-shrink-0" />
                 <div className="flex flex-col" dir="ltr">
-                  <span>0960961620</span>
-                  <span>0982237799</span>
+                  <span>{footerT.phone1}</span>
+                  <span>{footerT.phone2}</span>
                 </div>
               </li>
               <li className="flex items-center gap-3">
                 <FaEnvelope className="text-[#FF6B00] flex-shrink-0" />
                 <span className="break-all" dir="ltr">
-                  Email.abo.fahed.10@hotmail.com
+                  {footerT.email}
                 </span>
               </li>
             </ul>
@@ -205,7 +204,7 @@ const Footer: React.FC = () => {
         {/* الحقوق */}
         <div className="border-t border-white/10 pt-8 flex flex-col items-center justify-center text-xs text-white/50 text-center gap-2">
           <p>© 2026. {footerT.rights}</p>
-          <p>{t.footer.developer}</p>
+          <p>{footerT.developer}</p>
         </div>
       </div>
 

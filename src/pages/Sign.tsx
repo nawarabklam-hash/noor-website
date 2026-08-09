@@ -101,20 +101,21 @@ const Sign: React.FC = () => {
 
             return (
               <SwiperSlide key={item.id} className="flex justify-center cursor-grab active:cursor-grabbing">
-                <div className="relative w-full bg-[#1e1b22] border border-white/5 rounded-3xl p-4 md:p-14 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-8 overflow-hidden min-h-[580px]">
+                <div className="relative w-full bg-[#1e1b22] border border-white/5 rounded-3xl p-4 md:p-14 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-6 md:gap-8 overflow-hidden min-h-[500px] md:min-h-[580px]">
                   
-                  <div className="group w-full lg:w-[46%] bg-[#26222b]/90 backdrop-blur-md p-6 md:p-12 rounded-2xl shadow-xl z-10 text-white space-y-5 border border-white/10 transition-all duration-500 hover:scale-[1.02] hover:border-[#FF6600]/40">
-                    <h2 className={`text-2xl md:text-4xl font-extrabold tracking-tight leading-snug text-white group-hover:text-[#FF6600] ${isAr ? 'group-hover:-translate-x-2' : 'group-hover:translate-x-2'}`}>
+                  <div className="group w-full lg:w-[46%] bg-[#26222b]/90 backdrop-blur-md p-5 md:p-12 rounded-2xl shadow-xl z-10 text-white space-y-4 md:space-y-5 border border-white/10 transition-all duration-500 hover:scale-[1.02] hover:border-[#FF6600]/40">
+                    <h2 className={`text-xl md:text-4xl font-extrabold tracking-tight leading-snug text-white group-hover:text-[#FF6600] ${isAr ? 'group-hover:-translate-x-2' : 'group-hover:translate-x-2'}`}>
                       {currentSlide?.title}
                     </h2>
-                    <p className={`text-white/85 text-sm md:text-lg leading-relaxed font-normal ${isAr ? 'group-hover:-translate-x-2' : 'group-hover:translate-x-2'}`}>
+                    <p className={`text-white/85 text-xs md:text-lg leading-relaxed font-normal ${isAr ? 'group-hover:-translate-x-2' : 'group-hover:translate-x-2'}`}>
                       {currentSlide?.description}
                     </p>
                   </div>
 
+                  {/* تم تصغير الارتفاع في الموبايل من 320px إلى 220px */}
                   <div 
                     onClick={() => setActiveImage(item.image)}
-                    className="w-full lg:w-[50%] h-[320px] md:h-[480px] rounded-2xl overflow-hidden shadow-2xl relative cursor-pointer group/img border border-white/5"
+                    className="w-full lg:w-[50%] h-[220px] md:h-[480px] rounded-2xl overflow-hidden shadow-2xl relative cursor-pointer group/img border border-white/5"
                     title={t.signSection?.controls?.zoomTitle}
                   >
                     <img 
@@ -123,7 +124,7 @@ const Sign: React.FC = () => {
                       className="w-full h-full object-cover transform group-hover/img:scale-105 transition-transform duration-700 ease-out"
                     />
                     <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
-                      <span className="bg-[#FF6600] text-white text-sm font-semibold px-5 py-2.5 rounded-full shadow-lg flex items-center gap-2">
+                      <span className="bg-[#FF6600] text-white text-xs md:text-sm font-semibold px-4 py-2 rounded-full shadow-lg flex items-center gap-2">
                         <span>🔍</span> {t.signSection?.hero?.zoomText}
                       </span>
                     </div>
@@ -139,7 +140,7 @@ const Sign: React.FC = () => {
         <button
           ref={(node) => setLeftBtnEl(node)}
           aria-label={t.signSection?.controls?.next}
-          className="absolute top-[65%] lg:top-1/2 -translate-y-1/2 left-3 md:left-4 z-20 w-8 h-8 md:w-10 md:h-10 rounded-full bg-[#161317]/85 border border-[#FF6600]/40 backdrop-blur-md flex items-center justify-center hover:bg-[#FF6600] hover:scale-110 transition-all duration-300 group shadow-lg cursor-pointer"
+          className="absolute top-[60%] lg:top-1/2 -translate-y-1/2 left-2 md:left-4 z-20 w-8 h-8 md:w-10 md:h-10 rounded-full bg-[#161317]/85 border border-[#FF6600]/40 backdrop-blur-md flex items-center justify-center hover:bg-[#FF6600] hover:scale-110 transition-all duration-300 group shadow-lg cursor-pointer"
         >
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" className="text-[#FF6600] group-hover:text-white transition-colors">
             <path d="M15 18l-6-6 6-6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -150,7 +151,7 @@ const Sign: React.FC = () => {
         <button
           ref={(node) => setRightBtnEl(node)}
           aria-label={t.signSection?.controls?.prev}
-          className="absolute top-[65%] lg:top-1/2 -translate-y-1/2 right-3 md:right-4 z-20 w-8 h-8 md:w-10 md:h-10 rounded-full bg-[#161317]/85 border border-[#FF6600]/40 backdrop-blur-md flex items-center justify-center hover:bg-[#FF6600] hover:scale-110 transition-all duration-300 group shadow-lg cursor-pointer"
+          className="absolute top-[60%] lg:top-1/2 -translate-y-1/2 right-2 md:right-4 z-20 w-8 h-8 md:w-10 md:h-10 rounded-full bg-[#161317]/85 border border-[#FF6600]/40 backdrop-blur-md flex items-center justify-center hover:bg-[#FF6600] hover:scale-110 transition-all duration-300 group shadow-lg cursor-pointer"
         >
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" className="text-[#FF6600] group-hover:text-white transition-colors">
             <path d="M9 18l6-6-6-6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>

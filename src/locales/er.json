@@ -124,11 +124,13 @@
   "whyChooseUs": "لماذا اخترتنا",
   "contact": "تواصل معنا",
   "contactInfoTitle": "معلومات التواصل",
-  "address": "شارع الملك فهد، المبنى الرئيسي، الرياض، السعودية",
-  "phone": "+966 50 123 4567",
-  "email": "sales@example.com",
+  "address": "معربا - طريق الشرق - مقابل صالة الأماني للأفراح",
+  "phone1": "0960961620",
+  "phone2": "0982237799",
+  "email": "Email.abo.fahed.10@hotmail.com",
   "rights": "جميع الحقوق محفوظة.",
-  "developer": "تصميم وتطوير DeepCode"
+  "developer": "تصميم وتطوير الموقع"
+
 },"signSection": {
   "hero": {
     "badge": "قسم اللوحات واللافتات (Tabela)",

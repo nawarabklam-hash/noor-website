@@ -103,21 +103,15 @@ const Hero = () => {
           {t.hero.description}
         </motion.p>
 
-        {/* الأزرار */}
+        {/* الأزرار (تم حذف زر معرض الأعمال/اكتشف أعمالنا والإبقاء على التواصل أو أزرار أخرى) */}
         <motion.div 
           initial={shouldAnimate ? { opacity: 0, scale: 0.95 } : { opacity: 1, scale: 1 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.8 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 relative z-40"
         >
-          <Link to="/gallery" className="w-full sm:w-auto">
-            <Button size="lg" variant="primary" className="w-full">
-              {t.hero.btnGallery}
-            </Button>
-          </Link>
-          
           <Link to="/communication" className="w-full sm:w-auto">
-            <Button size="lg" variant="secondary" className="w-full">
+            <Button size="lg" variant="primary" className="w-full">
               {t.hero.btnContact}
             </Button>
           </Link>
