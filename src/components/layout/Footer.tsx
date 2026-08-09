@@ -1,4 +1,6 @@
 import React from "react";
+import { HashLink } from "react-router-hash-link";
+import { Link } from "react-router-dom"; // 1. استيراد Link
 import { useLanguage } from "../../context/LanguageContext";
 import {
   FaFacebookF,
@@ -14,7 +16,7 @@ import {
 const Footer: React.FC = () => {
   const { language, t } = useLanguage();
   const isAr = language === "AR";
-const footerT=t.footer
+  const footerT = t.footer;
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -29,21 +31,18 @@ const footerT=t.footer
       <div className="absolute top-0 left-0 w-full h-16 bg-[#f7f7f7] transform -skew-y-2 origin-top-left pointer-events-none" />
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10 max-w-full">
-        {/* القسم العلوي */}
+        {/* القسم العلوي والشعار */}
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between border-b border-white/10 pb-12 mb-12 gap-6">
-          {/* الشعار */}
           <div className="flex items-center gap-3.5">
             <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-[#FF6B00] to-[#ff8c37] flex items-center justify-center shadow-lg shadow-[#FF6B00]/30 flex-shrink-0">
               <span className="text-white font-black text-xl tracking-tighter">
                 NR
               </span>
             </div>
-
             <div>
               <span className="text-2xl font-black tracking-wider text-[#FF6B00] block leading-none">
                 NR
               </span>
-
               <span className="block text-[11px] text-white/50 mt-1">
                 {footerT.brandSubtitle}
               </span>
@@ -61,7 +60,6 @@ const footerT=t.footer
             >
               <FaFacebookF />
             </a>
-
             <a
               href="https://instagram.com"
               target="_blank"
@@ -74,9 +72,8 @@ const footerT=t.footer
           </div>
         </div>
 
-        {/* المحتوى */}
+        {/* الروابط ومعلومات التواصل */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
-          {/* الروابط */}
           <div className="lg:col-span-7">
             <h3 className="text-lg font-bold mb-6 text-white tracking-wide border-l-4 border-[#FF6B00] pl-3">
               {footerT.quickLinksTitle}
@@ -85,8 +82,9 @@ const footerT=t.footer
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 text-white/70 text-sm">
               <ul className="space-y-3">
                 <li>
-                  <a
-                    href="#home"
+                  <HashLink
+                    smooth
+                    to="/#home"
                     className="hover:text-[#FF6B00] transition-colors flex items-center gap-2"
                   >
                     {isAr ? (
@@ -94,14 +92,13 @@ const footerT=t.footer
                     ) : (
                       <FaChevronRight className="text-xs text-[#FF6B00] flex-shrink-0" />
                     )}
-
                     <span>{footerT.home}</span>
-                  </a>
+                  </HashLink>
                 </li>
-
                 <li>
-                  <a
-                    href="#about"
+                  <HashLink
+                    smooth
+                    to="/#about"
                     className="hover:text-[#FF6B00] transition-colors flex items-center gap-2"
                   >
                     {isAr ? (
@@ -109,14 +106,13 @@ const footerT=t.footer
                     ) : (
                       <FaChevronRight className="text-xs text-[#FF6B00] flex-shrink-0" />
                     )}
-
                     <span>{footerT.about}</span>
-                  </a>
+                  </HashLink>
                 </li>
-
                 <li>
-                  <a
-                    href="#projects"
+                  <HashLink
+                    smooth
+                    to="/#projects"
                     className="hover:text-[#FF6B00] transition-colors flex items-center gap-2"
                   >
                     {isAr ? (
@@ -124,16 +120,16 @@ const footerT=t.footer
                     ) : (
                       <FaChevronRight className="text-xs text-[#FF6B00] flex-shrink-0" />
                     )}
-
                     <span>{footerT.projects}</span>
-                  </a>
+                  </HashLink>
                 </li>
               </ul>
 
               <ul className="space-y-3">
                 <li>
-                  <a
-                    href="#services"
+                  <HashLink
+                    smooth
+                    to="/#services"
                     className="hover:text-[#FF6B00] transition-colors flex items-center gap-2"
                   >
                     {isAr ? (
@@ -141,14 +137,13 @@ const footerT=t.footer
                     ) : (
                       <FaChevronRight className="text-xs text-[#FF6B00] flex-shrink-0" />
                     )}
-
                     <span>{footerT.services}</span>
-                  </a>
+                  </HashLink>
                 </li>
-
                 <li>
-                  <a
-                    href="#features"
+                  <HashLink
+                    smooth
+                    to="/#features"
                     className="hover:text-[#FF6B00] transition-colors flex items-center gap-2"
                   >
                     {isAr ? (
@@ -156,14 +151,13 @@ const footerT=t.footer
                     ) : (
                       <FaChevronRight className="text-xs text-[#FF6B00] flex-shrink-0" />
                     )}
-
                     <span>{footerT.whyChooseUs}</span>
-                  </a>
+                  </HashLink>
                 </li>
-
                 <li>
-                  <a
-                    href="#contact"
+                  {/* تم تعديل هذا الرابط ليصبح Link عادي يوجه إلى صفحة أو كومبوننت اتصل بنا */}
+                  <Link
+                    to="/contact"
                     className="hover:text-[#FF6B00] transition-colors flex items-center gap-2"
                   >
                     {isAr ? (
@@ -171,9 +165,8 @@ const footerT=t.footer
                     ) : (
                       <FaChevronRight className="text-xs text-[#FF6B00] flex-shrink-0" />
                     )}
-
                     <span>{footerT.contact}</span>
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -188,20 +181,22 @@ const footerT=t.footer
             <ul className="space-y-4 text-white/70 text-sm">
               <li className="flex items-start gap-3">
                 <FaMapMarkerAlt className="text-[#FF6B00] mt-1 flex-shrink-0" />
-
-                <span className="break-words">{footerT.address}</span>
+                <span className="break-words">
+                  معربا - طريق الشرق - مقابل صالة الأماني للأفراح
+                </span>
               </li>
-
               <li className="flex items-center gap-3">
                 <FaPhoneAlt className="text-[#FF6B00] flex-shrink-0" />
-
-                <span dir="ltr">{footerT.phone}</span>
+                <div className="flex flex-col" dir="ltr">
+                  <span>0960961620</span>
+                  <span>0982237799</span>
+                </div>
               </li>
-
               <li className="flex items-center gap-3">
                 <FaEnvelope className="text-[#FF6B00] flex-shrink-0" />
-
-                <span className="break-all">{footerT.email}</span>
+                <span className="break-all" dir="ltr">
+                  Email.abo.fahed.10@hotmail.com
+                </span>
               </li>
             </ul>
           </div>
@@ -210,7 +205,6 @@ const footerT=t.footer
         {/* الحقوق */}
         <div className="border-t border-white/10 pt-8 flex flex-col items-center justify-center text-xs text-white/50 text-center gap-2">
           <p>© 2026. {footerT.rights}</p>
-
           <p>{t.footer.developer}</p>
         </div>
       </div>
@@ -218,7 +212,7 @@ const footerT=t.footer
       {/* زر الصعود */}
       <button
         onClick={scrollToTop}
-        className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 bg-[#2bb673] hover:bg-[#23965d] text-white p-3 rounded-lg shadow-xl transition-all flex items-center justify-center cursor-pointer z-20"
+        className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 bg-[#2bb673] hover:bg-[#23965d] text-white p-3 rounded-lg shadow-xl transition-all flex items-center justify-center cursor-pointer z-25"
         aria-label="Scroll to top"
       >
         <FaArrowUp />

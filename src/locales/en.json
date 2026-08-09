@@ -18,6 +18,7 @@
       "btnContact": "Contact Us"
     },
     "services": {
+      "tag":"Our Services",
     "sectionTitle": "With Our Professional Services",
     "sectionDesc": "We offer comprehensive, professional solutions in signage and digital printing to showcase your brand identity in the best possible light.",
     "learnMore": "Learn More"
@@ -57,11 +58,10 @@
   "badgeBoxLetters": "Box Letters",
   "badgeSigns": "Signs",
   "badgePrinting": "Digital Printing"
-},
- "contact": {
+},"contact": {
   "tag": "Contact Us",
-  "title": "We'd Love to Hear From You",
-  "description": "Our team is ready to answer your questions and bring your projects to life with the highest quality.",
+  "title": "We Are Glad to Connect With You",
+  "description": "Our team is ready to answer your inquiries and execute your projects with the best quality.",
   "formTitle": "Send Us a Message",
   "fullName": "Full Name",
   "phone": "Phone Number",
@@ -69,15 +69,17 @@
   "message": "Message",
   "sendBtn": "Send Request",
   "placeholderName": "Enter your full name",
-  "placeholderPhone": "+1234567890",
-  "placeholderProject": "Brand Identity / Signboards",
+  "placeholderPhone": "+963 960 961 620",
+  "placeholderProject": "Advertising Services / Signs",
   "placeholderMessage": "Write your message here...",
   "addressLabel": "Company Address",
+  "addressText": "Ma'araba - East Road - Opposite Al-Amani Wedding Hall",
   "phoneLabel": "Phone Number",
   "whatsappLabel": "WhatsApp",
-  "whatsappBtn": "Chat with us on WhatsApp",
+  "whatsappBtn": "Contact us directly via WhatsApp",
   "hoursLabel": "Working Hours",
-  "hoursText": "Monday – Saturday: 09:00 AM – 07:00 PM",
+  "hoursText": "Saturday - Thursday: From 8:00 to 9:00",
+  "emailLabel": "Email",
   "mapBtn": "Open in Google Maps"
 },
     "whyChooseUs": {
@@ -125,35 +127,94 @@
   "rights": "All rights reserved.",
   "developer": "Designed & Developed by DeepCode"
 },
-  "boxLetters": {
-    "hero": {
-      "title": "Box Letters",
-      "subtitle": "Premium illuminated letters for modern brands",
-      "button": "Explore More"
+"signSection": {
+  "hero": {
+    "badge": "Signage & Tabela Solutions",
+    "title": "Innovative Signage & Billboard Systems",
+    "zoomText": "Click to Zoom"
+  },
+  "controls": {
+    "next": "Next",
+    "prev": "Previous",
+    "close": "Close",
+    "zoomTitle": "Click to view full image"
+  },
+  "slides": {
+    "wayfinding": {
+      "title": "Directional & Wayfinding Sign Solutions",
+      "description": "Wayfinding and directional signs, used in numerous settings from hospitals and hotels to universities and financial buildings, are the ideal medium to provide information and guidance to visitors. At Venus Reklam, we plan, design, and manufacture wayfinding signs in standard or custom sizes, utilizing materials such as stainless steel, aluminum, acrylic, and wood. We offer a blend of elegance and functionality with easy installation systems, adding a professional touch to your spaces."
     },
-
-    "slides": {
-      "whiteAcrylic": {
-        "title": "White Acrylic Box Letters",
-        "description": "High quality acrylic letters with elegant LED lighting options, designed to create a modern and attractive appearance."
-      },
-
-      "metalOptions": {
-        "title": "Cutout Box Letters - Metal Options and Surface Treatments",
-        "description": "Custom manufactured letters available in different metal finishes including Painted Aluminum, Stainless Steel, Copper, Brass and Corten Steel."
-      },
-
-      "ledLetters": {
-        "title": "LED Illuminated Box Letters",
-        "description": "Professional illuminated letters combining premium materials with advanced LED technology."
-      }
+    "aluminum": {
+      "title": "Facade Cladding Systems",
+      "description": "You can clad your building facades with durable and aesthetic materials such as Aluminum Composite Material (ACM), compact laminates, wooden panels, and stainless steel, giving them a sleek, modern look. At Venus Reklam, facade cladding is complemented by professional graphics, LED lighting, lamps, displays, sensor-sliding doors, or glass cladding. We handle every project with meticulous precision, adding both functional and aesthetic value to your building designs."
+    },
+    "totem": {
+      "title": "Totem & Pylon Sign Solutions",
+      "description": "Advertising pylons are effective directional and promotional tools, anchored to concrete bases as standalone structures. With versatile applications ranging from parking lots and shopping malls to gas stations and schools, pylon signs help your business capture attention. At Venus Reklam, we offer diverse designs with or without LED lighting, utilizing materials such as aluminum, stainless steel, composite panels (dibond), acrylic, and wood. We also provide customized solutions for gas station pylons, incorporating digital LED displays for temperature, time, and pricing."
+    },
+    "illuminated": {
+      "title": "Illuminated Advertising Signs",
+      "description": "As a leading sign manufacturer, we design and produce illuminated and non-illuminated LED signs using diverse materials such as aluminum, stainless steel, acrylic, and wood. We provide comprehensive solutions for all your signage needs, including facade signs, illuminated signs, dimensional letters, shop signs, engraved signs, and architectural signs. We offer back-lit, side-lit, and front-lit options, producing indoor and outdoor signs from shopping malls to airports, tailored to your standard or custom requirements. Contact us for more details."
     }
   }
+}
+
+
+,"digitalPrinting": {
+  "slides": {
+    "slide1": {
+      "badge": "UV Printing Solutions",
+      "title": "Innovative printing technology resistant to external factors.",
+      "description": "UV printing provides superior resistance to sunlight, rain, and other external factors. It can be applied to flexible materials like fabrics, banners, meshes, and one-way vision, as well as rigid surfaces such as MDF, glass, ceramics, metals, acrylic, and Dekota. Durability and visual quality can be further enhanced with special varnish layers."
+    },
+    "slide2": {
+      "badge": "Outdoor Film Applications",
+      "title": "High-quality vinyl applications for stunning visuals",
+      "description": "Vinyl facade applications are used to effectively display your brand and large-scale graphics on buildings and advertising spaces."
+    },
+    "slide3": {
+      "badge": "Vinyl - OWV Printing",
+      "title": "Economical and Effective Advertising Solutions",
+      "description": "Self-adhesive vinyl and one-way vision technology are ideal, cost-effective promotional tools for effective brand promotion in stores. Suitable for outdoor use, this printing type offers durability and longevity, allowing for flexible and elegant custom cutting."
+    }
+  }
+
+},"aboutru": {
+  "slides": {
+    "slide1": {
+      "badge": "About Us",
+      "title": "Who We Are",
+      "description": "We are pleased to offer our valued clients our extensive experience in the outdoor advertising sector, along with our advanced organizational structure."
+    },
+    "slide2": {
+      "badge": "Our Vision",
+      "title": "Trust and Quality First",
+      "description": "In our modern business approach, trust, quality, on-time delivery, and occupational safety have always been our top priorities."
+    },
+    "slide3": {
+      "badge": "Future Goals",
+      "title": "Expanding Our Services",
+      "description": "Thanks to our advanced machinery, we continue to serve national and international brands through new investments."
+    }
+  },
+  "banner": {
+    "title": "Get the Best Solutions and Services",
+    "button": "Contact Us"
+  },
+  "counters": {
+    "happyClients": "Happy Clients",
+    "completedProjects": "Completed Projects",
+    "starRating": "5 Star Rating",
+    "expertTeam": "Expert Team Members"
+  }
+}
+
+}
 
   
  
     
-  }
+  
 
  
 

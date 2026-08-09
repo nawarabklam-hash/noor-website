@@ -48,7 +48,6 @@ const Navbar = () => {
     { name: navT.boxLetters || (isAr ? "حروف بارزة" : "Box Letters"), path: "/box-letters" },
     { name: navT.sign || (isAr ? "لوحات" : "Sign"), path: "/sign" },
     { name: navT.digitalPrinting || (isAr ? "طباعة رقمية" : "Digital Printing"), path: "/digital-printing" },
-    { name: navT.gallery || (isAr ? "معرض الأعمال" : "Gallery"), path: "/gallery" },
     { name: navT.aboutUs || (isAr ? "من نحن" : "About Us"), path: "/about-us" },
     { name: navT.communication || (isAr ? "تواصل معنا" : "Contact"), path: "/communication" },
   ];
@@ -103,14 +102,14 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* قائمة الموبايل الجانبية (مع تأمين العرض لعدم إحداث سكرول أفقي) */}
+      {/* قائمة الموبايل الجانبية (تم تعديل الاتجاه لتفتح من اليمين في العربي ومن اليسار في الإنجليزي) */}
       <div 
-        className={`lg:hidden fixed top-0 ${isAr ? "left-0 border-r" : "right-0 border-l"} h-full w-[75%] sm:w-[300px] max-w-full bg-[#0a0a0a] z-[60] flex flex-col p-6 sm:p-8 border-white/10 shadow-2xl transition-transform duration-500 ease-in-out overflow-y-hidden ${
-          isOpen ? "translate-x-0" : (isAr ? "-translate-x-full" : "translate-x-full")
+        className={`lg:hidden fixed top-0 ${isAr ? "right-0 border-l" : "left-0 border-r"} h-full w-[75%] sm:w-[300px] max-w-full bg-[#0a0a0a] z-[60] flex flex-col p-6 sm:p-8 border-white/10 shadow-2xl transition-transform duration-500 ease-in-out overflow-y-hidden ${
+          isOpen ? "translate-x-0" : (isAr ? "translate-x-full" : "-translate-x-full")
         }`}
         dir={isAr ? "rtl" : "ltr"}
       >
-        <button onClick={() => setIsOpen(false)} className="self-start text-white bg-white/10 p-2 rounded-full mb-8 hover:bg-white/20 transition-colors" aria-label="Close Menu">✕</button>
+        <button onClick={() => setIsOpen(false)} className="self-end text-white bg-white/10 p-2 rounded-full mb-8 hover:bg-white/20 transition-colors" aria-label="Close Menu">✕</button>
         <div className={`flex flex-col gap-5 ${isAr ? "text-right" : "text-left"}`}>
           {links.map((link) => (
             <NavLink key={link.path} to={link.path} onClick={() => setIsOpen(false)} className="text-base sm:text-lg font-bold text-white hover:text-[#FF6B00] transition-colors">
